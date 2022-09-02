@@ -6,7 +6,7 @@ use super::MathOperators;
 const ENGINE_PARSER: &str = pomsky!(
 :left([d w]*)
 ' '*
-:opcode(['+' '-' '/' '^'])
+:opcode(['+' '-' '/' '^' '*'])
 ' '*
 :right([d w]*)
 );

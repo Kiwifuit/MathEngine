@@ -39,6 +39,7 @@ impl FromStr for MathOperators {
     }
 }
 
+#[derive(Debug)]
 pub struct MathOperation {
     left: f64,
     right: f64,
@@ -127,5 +128,20 @@ mod test {
         assert_eq!(exp.right, 2.0);
         assert_eq!(exp.opcode, MathOperators::Exponent);
         assert_eq!(exp.perform(), 4.0);
+    }
+
+    #[test]
+    fn math_op_parse() {
+        let add = "1+2".parse::<MathOperation>();
+        let sub = "3 - 2".parse::<MathOperation>();
+        let mul = "2                                 *2".parse::<MathOperation>();
+        let div = "1 /                                                0".parse::<MathOperation>();
+        let exp = "2 ^2".parse::<MathOperation>();
+
+        assert!(add.is_ok(), "'add' is bad result: {:?}", add);
+        assert!(sub.is_ok(), "'sub' is bad result: {:?}", sub);
+        assert!(mul.is_ok(), "'mul' is bad result: {:?}", mul);
+        assert!(div.is_ok(), "'div' is bad result: {:?}", div);
+        assert!(exp.is_ok(), "'exp' is bad result: {:?}", exp);
     }
 }
