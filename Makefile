@@ -3,7 +3,7 @@ CARGO_FLAGS = --release --no-default-features
 SERVER_TARGET = aarch64-unknown-linux-gnu
 
 .PHONY: clean all
-all: win linux rpi
+all: win linux
 	mkdir bin
 	find target -type f -executable -name "$(APP_NAME)*" -exec cp {} bin/ \; -print
 
@@ -16,6 +16,3 @@ win:
 
 linux:
 	cargo build $(CARGO_FLAGS) --target x86_64-unknown-linux-gnu
-
-rpi:
-	cargo build $(CARGO_FLAGS) --target $(SERVER_TARGET)
