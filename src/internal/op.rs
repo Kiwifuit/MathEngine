@@ -59,7 +59,7 @@ mod test {
 
     #[test]
     fn divide_works() {
-        let none = divide(3.0, 4.0);
+        let none = divide(3.0, 0.0);
         let five = divide(26.0, 5.0);
 
         assert_eq!(none, None);
