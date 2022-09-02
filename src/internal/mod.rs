@@ -63,6 +63,16 @@ impl MathOperation {
     }
 }
 
+impl FromStr for MathOperation {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let (l, r, o) = parser::parse(&s)?;
+
+        Ok(Self::new(l, r, o))
+    }
+}
+
 #[cfg(test)]
 mod test {
     use super::{MathOperation, MathOperators};
