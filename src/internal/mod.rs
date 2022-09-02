@@ -1,4 +1,4 @@
-use std::str::FromStr;
+use std::{fmt::Display, str::FromStr};
 
 mod op;
 mod parser;
@@ -21,6 +21,22 @@ impl MathOperators {
             Self::Divide => op::divide,
             Self::Exponent => op::exponent,
         }
+    }
+}
+
+impl Display for MathOperators {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{}",
+            match self {
+                Self::Add => "+",
+                Self::Subtract => "-",
+                Self::Multiply => "*",
+                Self::Divide => "/",
+                Self::Exponent => "^",
+            }
+        )
     }
 }
 
@@ -61,6 +77,12 @@ impl MathOperation {
             Some(num) => num,
             None => 0.0,
         }
+    }
+}
+
+impl Display for MathOperation {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{} {} {}", self.left, self.opcode, self.right)
     }
 }
 
