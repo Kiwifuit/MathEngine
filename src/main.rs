@@ -35,6 +35,6 @@ fn main() {
         let math = prompt::<internal::MathOperation>("Enter math operation: ", false);
         let res = math.perform();
 
-        print!("{} is {}", math, res);
+        println!("{} is {}", math, res);
     }
 }
