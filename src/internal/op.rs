@@ -70,6 +70,6 @@ mod test {
     fn exponent_works() {
         let result = exponent(3.0, 4.0);
 
-        assert_eq!(result, Some(81));
+        assert_eq!(result, Some(81.0));
     }
 }
